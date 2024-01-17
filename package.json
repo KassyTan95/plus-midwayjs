@@ -27,7 +27,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/KassyTan95/plus-midwayjs"
   },
   "license": "MIT",
   "dependencies": {
