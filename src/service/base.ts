@@ -1,16 +1,26 @@
-import { Inject, Provide } from '@midwayjs/core'
-import { Context } from '@midwayjs/koa'
-import { TypeORMDataSourceManager } from '@midwayjs/typeorm'
-import { PlusEventManager } from '../event'
+import { Provide } from '@midwayjs/core'
+import { SelectQueryBuilder } from 'typeorm'
+import { createPaginationObject, IPaginationOptions } from '../interface'
 
 @Provide()
 export abstract class BaseService {
-  @Inject('ctx')
-  baseCtx: Context
+  /**
+   * 分页
+   * @param queryBuilder
+   * @param options
+   */
+  async paginate<T>(queryBuilder: SelectQueryBuilder<T>, options: IPaginationOptions) {
+    const { page, limit } = options
 
-  @Inject()
-  typeORMDataSourceManager: TypeORMDataSourceManager
+    queryBuilder.take(limit).skip((page - 1) * limit)
 
-  @Inject()
-  plusEventManager: PlusEventManager
+    const [items, total] = await queryBuilder.getManyAndCount()
+
+    return {
+      total,
+      pageSize: limit,
+      currentPage: page,
+      data: items
+    } as createPaginationObject<T>
+  }
 }

@@ -48,4 +48,18 @@ export interface BaseResponse<T> {
   timestamp?: number
 }
 
+// 分页参数
+export interface IPaginationOptions {
+  page: number
+  limit: number
+}
+
+// 分页数据
+export interface createPaginationObject<T> {
+  total: number
+  currentPage: number
+  pageSize: number
+  data: T[]
+}
+
 // type WithPartial<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
