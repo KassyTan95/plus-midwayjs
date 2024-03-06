@@ -27,12 +27,12 @@ export abstract class BaseController {
    * @param isShowTime 时间显示
    * @protected
    */
-  protected apiResp<D>(data?: D, msg?: string, code?: number, isShowTime: boolean = true): BaseResponse<D> {
+  protected apiResp<D>(data?: D, msg?: string, code?: number, isShowTime = true): BaseResponse<D> {
     const result: BaseResponse<D> = {
       code: code ? code : RESCODE.OK,
       msg: msg ? msg : 'ok'
     }
-    if (data && code === 0) {
+    if (data) {
       result['data'] = data
     }
     isShowTime && (result['timestamp'] = dayjs().unix())
