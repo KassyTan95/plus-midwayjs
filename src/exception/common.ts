@@ -5,7 +5,7 @@ import { RESCODE } from '../enums/global'
  * 通用异常
  */
 export class PlusCommonException extends BaseException {
-  constructor(name?: string, code?: number, msg?: string) {
+  constructor(msg?: string, code?: number, name?: string) {
     super(name ? name : 'PlusCommonException', code ? code : RESCODE.COMMONFAIL, msg ? msg : 'common fail')
   }
 }
