@@ -1,9 +1,8 @@
+import { App, IMidwayApplication, Init, Inject, Provide } from '@midwayjs/core'
 import { Context } from '@midwayjs/koa'
-import { App, Inject, Provide, Init, IMidwayApplication } from '@midwayjs/core'
-import { TypeORMDataSourceManager } from '@midwayjs/typeorm'
-import type { BaseResponse } from '../interface'
-import { RESCODE } from '../enums/global'
 import * as dayjs from 'dayjs'
+import { RESCODE } from '../enums/global'
+import type { BaseResponse } from '../interface'
 
 @Provide()
 export abstract class BaseController {
@@ -12,9 +11,6 @@ export abstract class BaseController {
 
   @App()
   protected baseApp: IMidwayApplication
-
-  @Inject()
-  protected typeORMDataSourceManager: TypeORMDataSourceManager
 
   @Init()
   async init() {}

@@ -10,6 +10,9 @@ export * from './exception/validate'
 // controller
 export * from './controller/base'
 
+// service
+export * from './service/base'
+
 // 事件
 export * from './event/index'
 
