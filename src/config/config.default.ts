@@ -6,7 +6,8 @@ export default {
       enable: false,
       secret: '695VUeu6u2BUt2c3',
       sign: {
-        expiresIn: '30d'
+        expiresIn: '30d',
+        algorithm: 'HS256'
       }
     },
     sign: {

@@ -61,10 +61,10 @@ export class JwtMiddleware {
           } catch (error) {
             const payload = jwt.decode(token)
             const newToken = jwt.sign(payload, this.jwtConfig.secret, {
-              algorithm: 'HS256',
+              algorithm: this.jwtConfig.sign.algorithm,
               expiresIn: this.jwtConfig.sign.expiresIn
             })
-            ctx.set('Authorization', newToken)
+            ctx.set('Authorization', `Bearer ${newToken}`)
           }
           await next()
         }
