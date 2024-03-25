@@ -46,7 +46,7 @@ export class JwtMiddleware {
         : this.config.plus.jwt
       this.jwtConfig = Object.assign(this.config.plus.jwt, this.jwtConfig)
       if (this.jwtConfig.enable) {
-        if (!ctx.headers['Authorization']) {
+        if (!ctx.headers['Authorization'] && !ctx.headers['authorization']) {
           throw new httpError.ForbiddenError('请先登录')
         }
         const parts = ctx.get('authorization').trim().split(' ')
