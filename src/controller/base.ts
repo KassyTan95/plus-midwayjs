@@ -39,11 +39,10 @@ export abstract class BaseController {
 
   /**
    * 解析 token
-   * @param header
    * @returns
    */
-  protected deToken(header: string) {
-    const token = header.trim().split(' ')[1]
+  protected deToken() {
+    const token = this.baseCtx.headers['authorization'].trim().split(' ')[1]
     if (!token) {
       throw new ForbiddenError('请先登录')
     }
