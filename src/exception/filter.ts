@@ -11,7 +11,7 @@ export class PlusExceptionFilter {
     this.coreLogger.error(err)
     return {
       code: err.status || RESCODE.COMMONFAIL,
-      msg: err.message,
+      msg: err.message.replace(/[" ]/g, ''),
       timestamp: dayjs().unix()
     }
   }
