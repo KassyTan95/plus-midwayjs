@@ -14,7 +14,7 @@ export class PlusModuleConfig {
 
   @Init()
   async init() {
-    let modules = []
+    const modules = []
     // 模块路径
     const moduleBasePath = `${this.app.getBaseDir()}/apps/`
     if (!fs.existsSync(moduleBasePath)) {
